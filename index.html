@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>front-end track</title>
+        
+        
+        
+        
+        
+        <style>
+            .CurrentDay {
+                color: blue;
+                font-weight: bold;
+            }
+            .CurrentTime {
+                color: green;
+                font-weight: bold;
+            }
+            .track {
+                color: red;
+                font-weight: bold;
+                font-size: 2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>STAGE ONE TASK</h1>
+                <h1 data-testid="SlackUserName">Jeremy Justin Anekunu</h1>
+                <img src="./pic/1000000308.jpg "alt= "jeremy justin anekunu">
+                <p class="CurrentDay">Today is <span>Thursday</span></p>
+                <p class="CurrentTime"> The Current Time is <span>8:39</span></p>
+                <div class="track">My track is <span>Frontend</span></div>
+        </div>
+        <script>
+            window.setInterval(function(){
+                var day = moment().format("DD MMMM");
+                var time =  moment().format("HH:mm");
+                var track = localStorage.getItem("track");
+            }60000);
+            document.querySelectorAll("span").forEach(function(el){
+                el.innerHTML = day + "-" + time + "-" + track;
+            })
+            localStorage.setItem("track", track);
+            localStorage.setItem("time", time);
+            localStorage.setItem("day", day);
+            setInterval(myFunc, 60000);
+        </script>
+        <script>
+            myFunc();
+        </script>
+    </body>
+</html>
