@@ -1,53 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport">
         <title>front-end track</title>
-        
-        
-        
-        
+              
         
         <style>
-            .CurrentDay {
-                color: blue;
-                font-weight: bold;
-            }
-            .CurrentTime {
-                color: green;
-                font-weight: bold;
-            }
-            .track {
-                color: red;
-                font-weight: bold;
-                font-size: 2rem;
+            body {
+                font-weight: 300px;
+                background-color: aliceblue;
             }
         </style>
     </head>
     <body>
         <h1>STAGE ONE TASK</h1>
-                <h1 data-testid="SlackUserName">Jeremy Justin Anekunu</h1>
-                <img src="./pic/1000000308.jpg "alt= "jeremy justin anekunu">
-                <p class="CurrentDay">Today is <span>Thursday</span></p>
-                <p class="CurrentTime"> The Current Time is <span>8:39</span></p>
-                <div class="track">My track is <span>Frontend</span></div>
-        </div>
+        <h1 data-testid="SlackUserName">Jeremy Justin Anekunu</h1>
+        <img src="./pic/1000000308.jpg "alt= "jeremy justin anekunu" data-testid="SlackDisplayImage">
+        <p data-testid="currentDayOfTheWeek">Today is <span>Thursday</span></p>
+        <p data-testid="currentUTCTime">The curent time is <span>....</span></p>
+        <p data-testid="MyTrack">My track is <span>Frontend</span></p>
         <script>
-            window.setInterval(function(){
-                var day = moment().format("DD MMMM");
-                var time =  moment().format("HH:mm");
-                var track = localStorage.getItem("track");
-            }60000);
-            document.querySelectorAll("span").forEach(function(el){
-                el.innerHTML = day + "-" + time + "-" + track;
-            })
-            localStorage.setItem("track", track);
-            localStorage.setItem("time", time);
-            localStorage.setItem("day", day);
-            setInterval(myFunc, 60000);
+            document.addEventListener("DOMContentLoaded", function () {
+            const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const currentDayElement = document.querySelector('[data-testid="currentDayOfTheWeek"]');
+            const currentUTCTimeElement = document.querySelector('[data-testid="currentUTCTime"]');
+
+            setInterval(() => {
+                const currentDate = new Date();
+                const currentDay = daysOfWeek[currentDate.getUTCDay()];
+                const currentUTCTime = currentDate.getTime();
+
+        
+
+                currentDayElement.textContent = currentDay;
+                currentUTCTimeElement.textContent = `Current UTC Time: ${currentUTCTime} milliseconds`;
+    }, 1000);
+});
+   
         </script>
-        <script>
-            myFunc();
-        </script>
+
     </body>
 </html>
